@@ -1,5 +1,13 @@
+import { Animation } from "./Animation";
+import { Globalstyle } from "./Globalstyle";
+
 function App() {
-  return <></>;
+  return (
+    <>
+      <Globalstyle />
+      <Animation />
+    </>
+  );
 }
 
 export default App;
