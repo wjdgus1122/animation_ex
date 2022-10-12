@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 const Wrap = styled.div`
@@ -8,18 +9,6 @@ const Wrap = styled.div`
   align-items: center;
   background-color: beige;
   position: relative;
-`;
-const BoxWrap = styled.div`
-  width: 70%;
-  height: 10%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-const Box = styled.div`
-  width: 20%;
-  height: 100%;
-  background-color: salmon;
 `;
 const ButtonWrap = styled.div`
   width: 30%;
@@ -45,21 +34,45 @@ const Btn = styled.div`
     background-color: crimson;
   }
 `;
+const BoxWrap = styled.div`
+  width: 70%;
+  height: 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+`;
+const Box = styled.div`
+  width: 20%;
+  height: 100%;
+  background-color: salmon;
+  position: relative;
+  animation: box 2s forwards;
+  @keyframes box {
+    0% {
+      ${(props) => props.ani} : 100px,
+    }
+    100% {
+      ${(props) => props.ani} : 0
+    }
+  }
+`;
 
 export const Animation = () => {
+  const [ani, setAni] = useState(``);
   return (
     <Wrap>
       <ButtonWrap>
-        <Btn>Up</Btn>
+        <Btn onClick={() => setAni(`top`)}>Up</Btn>
         <Btn>Down</Btn>
         <Btn>Right</Btn>
         <Btn>Left</Btn>
       </ButtonWrap>
       <BoxWrap>
-        <Box />
-        <Box />
-        <Box />
-        <Box />
+        <Box className="box box1" ani={ani} />
+        <Box className="box box2" />
+        <Box className="box box3" />
+        <Box className="box box4" />
       </BoxWrap>
     </Wrap>
   );
